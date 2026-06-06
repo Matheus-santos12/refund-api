@@ -6,7 +6,18 @@ info:
 http:
   method: POST
   url: "{{BASE_URL}}/{{RESOURCE}}"
-  auth: inherit
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiZW1wbG95ZWUiLCJpYXQiOjE3ODA3Njk3MTgsImV4cCI6MTc4MDg1NjExOCwic3ViIjoiODBkOTg4MjEtY2QxMC00Nzc3LWIxNzktNzM1ZTc4NGM5MDA2In0.vxj7b67M-DYskPOSGXmvWbAO3vAtW1Dz9GF_0TkgJi4
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        {
+          const token = res.getBody().token;
+          bru.setEnvVar("token", token)
+        }
 
 settings:
   encodeUrl: true
