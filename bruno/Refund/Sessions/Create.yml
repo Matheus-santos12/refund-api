@@ -10,7 +10,7 @@ http:
     type: json
     data: |-
       {
-        "email": "mario@email.com",
+        "email": "matheus@email.com",
         "password": "123456"
       }
   auth: inherit
@@ -23,7 +23,7 @@ runtime:
     - type: after-response
       code: |-
         const json = res.getBody();
-        bru.setEnvVar("token",json.token)
+        bru.setVar("token",json.token)
 
 settings:
   encodeUrl: true

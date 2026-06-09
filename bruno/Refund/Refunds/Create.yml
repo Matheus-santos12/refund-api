@@ -27,7 +27,7 @@ runtime:
     - type: after-response
       code: |-
         const json = res.getBody();
-        bru.setEnvVar("token",json.token)
+        bru.setVar("token",json.token)
 
 settings:
   encodeUrl: true

@@ -5,7 +5,11 @@ info:
 
 http:
   method: GET
-  url: "{{BASE_URL}}/{{RESOURCE}}"
+  url: "{{BASE_URL}}/{{RESOURCE}}?name=Matheus"
+  params:
+    - name: name
+      value: Matheus
+      type: query
   auth:
     type: bearer
     token: "{{token}}"
@@ -14,11 +18,6 @@ runtime:
   variables:
     - name: RESOURCE
       value: refunds
-  scripts:
-    - type: after-response
-      code: |-
-        const json = res.getBody();
-        bru.setEnvVar("token",json.token)
 
 settings:
   encodeUrl: true
