@@ -1,20 +1,11 @@
 info:
-  name: Create
+  name: Index
   type: http
-  seq: 1
+  seq: 2
 
 http:
-  method: POST
+  method: GET
   url: "{{BASE_URL}}/{{RESOURCE}}"
-  body:
-    type: json
-    data: |-
-      {
-        "name": "Troca de peças",
-        "category": "services",
-        "amount": 180.34,
-        "filename": "controvante.png"
-      }
   auth:
     type: bearer
     token: "{{token}}"
