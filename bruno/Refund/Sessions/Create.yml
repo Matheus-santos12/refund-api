@@ -19,6 +19,11 @@ runtime:
   variables:
     - name: RESOURCE
       value: sessions
+  scripts:
+    - type: after-response
+      code: |-
+        const json = res.getBody();
+        bru.setEnvVar("token",json.token)
 
 settings:
   encodeUrl: true

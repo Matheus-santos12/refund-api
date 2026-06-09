@@ -1,3 +1,5 @@
+import { prisma } from "@/database/prisma";
+import { AppError } from "@/utils/AppError";
 import { Request, Response } from "express";
 import { z } from "zod";
 
@@ -18,11 +20,25 @@ export class RefundsController {
         .min(1, { message: "Informe o nome da solicitação" }),
       category: CategoriesEnum,
       amount: z.number().positive({ message: "O valor precisa ser positivo" }),
-      filename: z.string().min(20),
+      filename: z.string().min(15),
     });
 
     const { name, category, amount, filename } = bodySchema.parse(request.body);
 
-    response.json({ message: "OK!" });
+    if (!request.user?.id) {
+      throw new AppError("Unauthorized", 401);
+    }
+
+    const refund = await prisma.refunds.create({
+      data: {
+        name,
+        category,
+        amount,
+        filename,
+        userId: request.user?.id,
+      },
+    });
+
+    response.status(201).json(refund);
   }
 }
