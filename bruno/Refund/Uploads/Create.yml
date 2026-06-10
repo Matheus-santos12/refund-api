@@ -5,7 +5,11 @@ info:
 
 http:
   method: POST
-  url: "{{BASE_URL}}/{{RESOURCE}}"
+  url: "{{BASE_URL}}/{{RESOURCE}}?file="
+  params:
+    - name: file
+      value: ""
+      type: query
   auth:
     type: bearer
     token: "{{token}}"
