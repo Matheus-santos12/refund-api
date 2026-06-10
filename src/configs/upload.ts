@@ -1,6 +1,10 @@
 import multer from "multer";
 import crypto from "node:crypto";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const TMP_FOLDER = path.resolve(__dirname, "..", "..", "tmp");
 const UPLOADS_FOLDER = path.relative(TMP_FOLDER, "uploads");
@@ -20,7 +24,7 @@ const MULTER = {
   }),
 };
 
-export {
+export default {
   ACCEPTED_IMAGE_TYPES,
   MAX_FILE_SIZE,
   MULTER,

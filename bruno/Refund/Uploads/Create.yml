@@ -6,23 +6,18 @@ info:
 http:
   method: POST
   url: "{{BASE_URL}}/{{RESOURCE}}"
-  body:
-    type: json
-    data: |-
-      {
-        "email": "mario@email.com",
-        "password": "123456"
-      }
-  auth: inherit
+  auth:
+    type: bearer
+    token: "{{token}}"
 
 runtime:
   variables:
     - name: RESOURCE
-      value: sessions
+      value: uploads
   scripts:
     - type: after-response
       code: |-
-        const json = res.getBody();
+        const json = res.getBody()
         bru.setVar("token",json.token)
 
 settings:
