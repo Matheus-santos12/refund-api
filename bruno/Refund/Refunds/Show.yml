@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{BASE_URL}}/{{RESOURCE}}"
+  url: "{{BASE_URL}}/{{RESOURCE}}/ad9b9577-7e12-4174-91b4-532e461cc40d"
   auth:
     type: bearer
     token: "{{token}}"
