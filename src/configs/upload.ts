@@ -6,7 +6,7 @@ import { fileURLToPath } from "node:url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const MAX_SIZE = 3;
+const MAX_SIZE = 7;
 const TMP_FOLDER = path.resolve(__dirname, "..", "..", "tmp");
 const UPLOADS_FOLDER = path.relative(TMP_FOLDER, "uploads");
 
